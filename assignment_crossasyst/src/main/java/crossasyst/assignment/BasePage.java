@@ -21,7 +21,7 @@ public class BasePage {
 	public void loadURL(String url) {
 		driver.get(url);
 		driver.manage().window().maximize();
-		WebDriverWait wait = waitInstance(driver, 55);
+		WebDriverWait wait = waitInstance(driver, 55000);
 		wait.until(ExpectedConditions.titleContains("My Store"));
 
 	}

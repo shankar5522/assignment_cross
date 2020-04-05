@@ -6,8 +6,12 @@ import crossasyst.assignment.pages.OrderProcess;
 import crossasyst.assignment.pages.RegistrationProcess;
 
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Parameters;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterTest;
 
 public class TC_CheckoutOrderWithUserRegistration {
@@ -29,7 +33,15 @@ public class TC_CheckoutOrderWithUserRegistration {
 
 	@Test
 	public void userRegistration() {
-		System.out.println("HIiiiiiiii");
+		String userName = "test_test12456@gmail.com";
+		String password = "Test12345@";
+
+		//registeration.registrationProcess(userName, password);
+
+		//removed below 2 lines once all the steps has completed
+		driver.findElement(By.xpath("//a[contains(text(),'Sign in')]")).click();
+		new WebDriverWait(driver, 20).until(ExpectedConditions.titleContains("Login - My Store"));
+		registeration.signIn(userName, password);
 	}
 
 	@AfterTest
@@ -39,5 +51,4 @@ public class TC_CheckoutOrderWithUserRegistration {
 		registeration = null;
 		driver = null;
 	}
-
 }
