@@ -42,6 +42,15 @@ public class TC_CheckoutOrderWithUserRegistration {
 		driver.findElement(By.xpath("//a[contains(text(),'Sign in')]")).click();
 		new WebDriverWait(driver, 20).until(ExpectedConditions.titleContains("Login - My Store"));
 		registeration.signIn(userName, password);
+		order.checkoutProduct();
+
+		//just to stay on page
+		try {
+			Thread.sleep(30000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@AfterTest
