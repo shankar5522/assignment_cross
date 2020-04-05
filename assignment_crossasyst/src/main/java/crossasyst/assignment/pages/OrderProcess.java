@@ -86,26 +86,35 @@ public class OrderProcess {
 		System.out.println(getInvoiceAmt);
 		System.out.println("-----AMOUNT VERIFICATION-------------");
 
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		driver.findElement(checkout_proceed).click();
+		System.out.println("Order Processing");
 
 		//address Checkout
 		actions.moveToElement(driver.findElement(checkout_proceed)).build().perform();
 		wait.until(ExpectedConditions.elementToBeClickable(checkout_proceed));
 		driver.findElement(checkout_proceed).click();
+		System.out.println("Address Checked");
 
 		//Terms and condition
 		actions.moveToElement(driver.findElement(termsConditionsCheckout)).build().perform();
 		driver.findElement(termsConditionsCheckout).click();
 		driver.findElement(checkout_proceed).click();
+		System.out.println("Terms & Condition Checked");
 
 		//payment method
 		actions.moveToElement(driver.findElement(paymentMethodByWire)).build().perform();
 		driver.findElement(paymentMethodByWire).click();
+		System.out.println("Payment Method Checked");
 
 		//payment confirmation
 		actions.moveToElement(driver.findElement(orderConfirmation)).build().perform();
 		driver.findElement(orderConfirmation).click();
-
 		System.out.println("Your Order has placed and same can be tracked under order History");
 	}
 }
